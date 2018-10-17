@@ -31,17 +31,46 @@
 
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    const first = inventors.filter(inventor => {
+      return inventor.year < 1600 && inventor.year >= 1500;
+    });
+
+    console.log("first");
+    console.table(first);
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
+    const second = inventors.map(inventor => {
+      return `${inventor.first} ${inventor.last}`;
+    });
+
+    console.log("second");
+    console.table(second);
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    const third = inventors.sort((inv1, inv2) => {
+      return inv1.year < inv2.year ? -1 : 1;
+    });
+
+    console.log("third");
+    console.table(third);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
+    const fourth = inventors.reduce((total, inventor) => {
+      return total + inventor.passed - inventor.year;
+    }, 0);
+
+    console.log("fourth", fourth);
 
     // 5. Sort the inventors by years lived
+    const fifth = inventors.sort((inv1, inv2) => {
+      return (inv1.passed - inv1.year) > (inv2.passed - inv2.year) ? -1 : 1;
+    });
+
+    console.log("fifth");
+    console.table(fifth);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
@@ -49,10 +78,25 @@
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const seventh = people.sort((p1, p2) => {
+      const p1Last = p1.split(",")[0];
+      const p2Last = p2.split(",")[0];
+      return p1Last < p2Last;
+    });
+
+    console.log("seventh");
+    console.table(seventh);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    
+    // const eighth = data.reduce((count, datum) => {
+    //   count[datum] += 1;
+    // }, 0);
+
+    // console.log("eighth");
+    // console.table(eighth);
 
   </script>
 </body>

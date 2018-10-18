@@ -74,14 +74,17 @@
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-
+    
+    // Array.from(document.querySelectorAll(".mw-category a"))
+    //   .map(link => link.innerText)
+    //   .filter(link => link.includes("de"));
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
     const seventh = people.sort((p1, p2) => {
       const p1Last = p1.split(",")[0];
       const p2Last = p2.split(",")[0];
-      return p1Last < p2Last;
+      return p1Last < p2Last ? -1 : 1;
     });
 
     console.log("seventh");
@@ -91,12 +94,17 @@
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
     
-    // const eighth = data.reduce((count, datum) => {
-    //   count[datum] += 1;
-    // }, 0);
+    const eighth = data.reduce((count, datum) => {
+      if (count[datum]) {
+        count[datum] += 1;
+      } else {
+        count[datum] = 1;
+      }
+      return count;
+    }, {});
 
-    // console.log("eighth");
-    // console.table(eighth);
+    console.log("eighth");
+    console.table(eighth);
 
   </script>
 </body>

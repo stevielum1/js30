@@ -96,6 +96,44 @@
   </div>
 
 <script>
+  let shiftDown = false;
+  let lastChecked;
+
+  const inputs = document.querySelectorAll("input[type='checkbox']");
+  inputs.forEach(input => input.addEventListener("click", check));
+
+  function check(e) {
+    if (shiftDown && this.checked) {
+      let inBetween = false;
+
+      inputs.forEach(input => {
+        if (input === this || input === lastChecked) {
+          inBetween = !inBetween;
+        }
+
+        if (inBetween) {
+          input.checked = true;
+        }
+      });
+    }
+
+    lastChecked = this;
+  }
+
+  window.addEventListener("keydown", e => {
+    if (e.keyCode === 16) {
+      shiftDown = true;
+      console.log(shiftDown);
+    }
+  });
+
+  window.addEventListener("keyup", e => {
+    if (e.keyCode === 16) {
+      shiftDown = false;
+      console.log(shiftDown);
+    }
+  });
+
 </script>
 </body>
 </html>

@@ -11,6 +11,7 @@
   <script>
     const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
 
+    // select p element, break on attribute modifications
     function makeGreen() {
       const p = document.querySelector('p');
       p.style.color = '#BADA55';
@@ -18,29 +19,73 @@
     }
 
     // Regular
+    console.log("regular");
 
     // Interpolated
+    const poop = "💩";
+    console.log("interpolated %s", poop);
+    console.log(`interpolated ${poop}`);
 
     // Styled
+    console.log("%cstyled", "font-size: 30px; background: yellow; text-shadow: 1px 1px 3px black");
 
     // warning!
+    //stack trace
+    console.warn("warn");
 
     // Error :|
+    //stack trace
+    console.error("error");
 
     // Info
+    console.info("info");
 
     // Testing
+    //only fires if something is wrong
+    console.assert(1 === 2, "assert");
 
     // clearing
+    // console.clear();
 
     // Viewing DOM Elements
+    const p = document.querySelector("p");
+    console.log("viewing DOM elements");
+    console.dir(p);
 
     // Grouping together
+    console.log("grouping togethet");
+    dogs.forEach(dog => {
+      // console.group(`${dog.name}`);
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`Name: ${dog.name}`);
+      console.log(`Years: ${dog.age}`);
+      console.log(`Dog Years: ${dog.age * 7}`);
+      console.groupEnd(`${dog.name}`);
+    }) 
 
     // counting
+    console.count("a");
+    console.count("b");
+    console.count("a");
+    console.count("a");
+    console.count("b");
+    console.count("b");
+    console.count("b");
+    console.count("b");
+    console.count("a");
+    console.count("a");
+    console.count("a");
 
     // timing
+    console.time("fetching data");
+    fetch("https://api.github.com/users/stevielum1")
+      .then(data => data.json())
+      .then(data => {
+        console.time("fetching data");
+        console.log(data);
+      });
 
+    console.table(dogs);
   </script>
 </body>
 </html>
